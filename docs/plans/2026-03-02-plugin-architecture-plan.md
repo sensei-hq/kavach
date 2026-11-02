@@ -447,7 +447,7 @@ Create `solution/adapters/convex/package.json`:
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerrythomas/kavach",
+    "url": "https://github.com/sensei-hq/kavach",
     "directory": "adapters/convex"
   },
   "publishConfig": {

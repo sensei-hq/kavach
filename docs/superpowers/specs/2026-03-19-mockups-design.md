@@ -9,7 +9,7 @@
 
 Two parallel mockup tracks, all under a `/mockups` route in `sites/learn`. Each option is a full Svelte page using the existing UnoCSS + Rokkit stack — no HTML-only prototypes, no double-work on rebuild.
 
-A side task: report the Rokkit `List` collapsible bug on `jerrythomas/rokkit`.
+A side task: report the Rokkit `List` collapsible bug on `sensei-hq/rokkit`.
 
 ---
 
@@ -139,7 +139,7 @@ Both options share:
 
 ## Collapsible Bug Report (side task)
 
-The `List` component in `@rokkit/ui` receives `collapsible={true}` in the docs sidebar but groups render collapsed by default with no visible toggle working. File issue on `jerrythomas/rokkit` with:
+The `List` component in `@rokkit/ui` receives `collapsible={true}` in the docs sidebar but groups render collapsed by default with no visible toggle working. File issue on `sensei-hq/rokkit` with:
 
 - Reproduction: `List` with nested items, `collapsible={true}`, groups start collapsed
 - Expected: groups expanded by default OR toggle clearly visible and functional

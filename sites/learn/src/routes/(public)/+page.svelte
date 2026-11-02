@@ -65,9 +65,7 @@
 			</p>
 			<div class="flex justify-center gap-3 pt-2">
 				<Button href="/docs/quick-start" variant="primary" size="lg">Get Started</Button>
-				<Button href="https://github.com/jerrythomas/kavach" style="outline" size="lg"
-					>GitHub</Button
-				>
+				<Button href="https://github.com/sensei-hq/kavach" style="outline" size="lg">GitHub</Button>
 			</div>
 
 			<div class="flex w-full flex-col gap-3 sm:flex-row">
@@ -196,7 +194,7 @@
 					Get Started
 				</a>
 				<a
-					href="https://github.com/jerrythomas/kavach"
+					href="https://github.com/sensei-hq/kavach"
 					class="rounded-xl border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
 				>
 					GitHub
@@ -247,7 +245,7 @@
 				<div class="space-y-2">
 					<p class="footer-label">Resources</p>
 					<ul class="space-y-1.5">
-						<li><a href="https://github.com/jerrythomas/kavach" class="footer-link">GitHub</a></li>
+						<li><a href="https://github.com/sensei-hq/kavach" class="footer-link">GitHub</a></li>
 						<li><a href="/llms/llms.txt" class="footer-link">llms.txt</a></li>
 					</ul>
 				</div>

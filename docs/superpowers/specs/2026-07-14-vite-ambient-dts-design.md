@@ -1,6 +1,6 @@
 # Design: `@kavach/vite` generates ambient `.d.ts` for its virtual modules
 
-**Issue:** [#22](https://github.com/jerrythomas/kavach/issues/22)
+**Issue:** [#22](https://github.com/sensei-hq/kavach/issues/22)
 **Date:** 2026-07-14
 **Status:** Approved — ready for planning
 

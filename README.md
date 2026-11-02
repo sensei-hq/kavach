@@ -2,10 +2,9 @@
 
 > Focus on what truly matters: crafting exceptional applications. Kavach provides a set of components and utility functions that effortlessly integrate authentication and role-based route protection into your app, without compromising its performance or flexibility.
 
-[![Maintainability][maintainability_badge]][maintainability_url]
-[![Test Coverage][coverage_badge]][coverage_url]
-![GitHub Workflow Status][workflow_status_url]
-![GitHub last commit](https://img.shields.io/github/last-commit/jerrythomas/kavach)
+[![Maintainability](https://qlty.sh/gh/sensei-hq/projects/kavach/maintainability.svg)](https://qlty.sh/gh/sensei-hq/projects/kavach)
+[![Code Coverage](https://qlty.sh/gh/sensei-hq/projects/kavach/coverage.svg)](https://qlty.sh/gh/sensei-hq/projects/kavach)
+![GitHub last commit](https://img.shields.io/github/last-commit/sensei-hq/kavach)
 
 ![kavach](kavach.svg)
 
@@ -111,9 +110,3 @@ export default {
 ## License
 
 MIT © [Jerry Thomas](https://github.com/jerrythomas)
-
-[workflow_status_url]: https://img.shields.io/github/workflow/status/jerrythomas/kavach/publish.yml/badge.svg?branch=next
-[maintainability_badge]: https://api.codeclimate.com/v1/badges/fa032a4f7e29a8c89c7d/maintainability
-[maintainability_url]: https://codeclimate.com/github/jerrythomas/kavach/maintainability
-[coverage_badge]: https://api.codeclimate.com/v1/badges/fa032a4f7e29a8c89c7d/test_coverage
-[coverage_url]: https://codeclimate.com/github/jerrythomas/kavach/test_coverage

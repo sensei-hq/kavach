@@ -56,7 +56,7 @@
 		<kbd class="border-surface-z4 rounded border px-1 font-mono text-xs">⌘K</kbd>
 	</button>
 	<a
-		href="https://github.com/jerrythomas/kavach"
+		href="https://github.com/sensei-hq/kavach"
 		class="text-surface-z6 hover:text-surface-z9 text-sm transition-colors">GitHub</a
 	>
 </header>

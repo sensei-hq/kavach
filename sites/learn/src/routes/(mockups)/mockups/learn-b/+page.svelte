@@ -40,7 +40,7 @@
 	{/each}
 	<div class="flex-1"></div>
 	<a
-		href="https://github.com/jerrythomas/kavach"
+		href="https://github.com/sensei-hq/kavach"
 		class="border-surface-z4 bg-surface-z2 hover:bg-surface-z3 flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors"
 	>
 		<span class="i-app-code-visible h-3.5 w-3.5"></span>
@@ -66,7 +66,7 @@
 					<Button onclick={() => (section = 'docs')} variant="primary" size="lg">Get Started</Button
 					>
 					<a
-						href="https://github.com/jerrythomas/kavach"
+						href="https://github.com/sensei-hq/kavach"
 						class="border-surface-z4 bg-surface-z2 hover:bg-surface-z3 inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-medium transition-colors"
 					>
 						View on GitHub

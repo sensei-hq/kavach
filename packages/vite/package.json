@@ -7,7 +7,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerrythomas/kavach",
+    "url": "https://github.com/sensei-hq/kavach",
     "directory": "packages/vite"
   },
   "homepage": "https://kavach.sensei-hq.com",
