@@ -45,19 +45,3 @@ jobs:
         with:
           token: ${{ secrets.QLTY_COVERAGE_TOKEN }}
           files: coverage/lcov.info
-      - name: Report results to DeepSource
-        env:
-          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
-          # Pinned release + pinned digest. `curl https://deepsource.io/cli | sh`
-          # executes whatever that endpoint serves at run time, unverified.
-          DEEPSOURCE_VERSION: 0.10.1
-          DEEPSOURCE_SHA256: e415a6a53257457ef1dad900fdb39aeb991dd01c35c4be9cafa88a41f9e50b3b
-        run: |
-          set -euo pipefail
-          TARBALL="deepsource_${DEEPSOURCE_VERSION}_linux_amd64.tar.gz"
-          curl -fsSL --proto '=https' --tlsv1.2 \
-            -o "$TARBALL" \
-            "https://github.com/deepsourcelabs/cli/releases/download/v${DEEPSOURCE_VERSION}/${TARBALL}"
-          echo "${DEEPSOURCE_SHA256}  ${TARBALL}" | sha256sum -c -
-          tar -xzf "$TARBALL" deepsource
-          ./deepsource report --analyzer test-coverage --key javascript --value-file ./coverage/lcov.info
