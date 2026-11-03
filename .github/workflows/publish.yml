@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*'
+  # Manual re-publish (reads versions from package.json, skips already-published), as rokkit.
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -41,6 +43,8 @@ jobs:
       - name: Publish packages
         env:
           NODE_NO_WARNINGS: 1
+          # Shows npm's OIDC exchange (trusted publishing) in the log.
+          NPM_CONFIG_LOGLEVEL: verbose
         run: |
           # Publish in dependency order so each package's deps are already on npm
           PACKAGES=(cookie hashing logger query sentry auth ui vite cli)
@@ -134,6 +138,8 @@ jobs:
       - name: Publish adapters
         env:
           NODE_NO_WARNINGS: 1
+          # Shows npm's OIDC exchange (trusted publishing) in the log.
+          NPM_CONFIG_LOGLEVEL: verbose
         run: |
           # Publish in dependency order — all adapters depend on kavach (published above)
           ADAPTERS=(amplify auth0 supabase firebase convex)
