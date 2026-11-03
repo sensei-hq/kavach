@@ -31,5 +31,9 @@
     "binding": "ASSETS",
     "directory": ".svelte-kit/cloudflare"
   },
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Non-production branches (develop) deploy with `wrangler preview`, which
+  // refuses to run without a `previews` block. Empty is enough: assets,
+  // compatibility settings and placement stay at the top level.
+  "previews": {}
 }

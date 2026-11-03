@@ -36,7 +36,7 @@ test.describe('Home Page Links', () => {
 	test('View on GitHub link is correct', async ({ page }) => {
 		await page.goto('/')
 		const githubLink = page.locator('a:has-text("View on GitHub")')
-		await expect(githubLink).toHaveAttribute('href', 'https://github.com/jerrythomas/kavach')
+		await expect(githubLink).toHaveAttribute('href', 'https://github.com/sensei-hq/kavach')
 	})
 
 	test('navigation links have correct hrefs', async ({ page }) => {

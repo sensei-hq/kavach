@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*'
+  # Manual re-publish (reads versions from package.json, skips already-published), as rokkit.
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -27,10 +29,12 @@ jobs:
           bun-version-file: package.json
           no-cache: true
 
+      # npm trusted publishing (OIDC, `id-token: write`): no token and no
+      # `registry-url`. That option writes an .npmrc with `_authToken=${NODE_AUTH_TOKEN}`,
+      # and an empty token is sent instead of the OIDC exchange (ENEEDAUTH, v1.3.1).
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24.x
-          registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
       - name: Install dependencies
@@ -38,8 +42,9 @@ jobs:
 
       - name: Publish packages
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_NO_WARNINGS: 1
+          # Shows npm's OIDC exchange (trusted publishing) in the log.
+          NPM_CONFIG_LOGLEVEL: verbose
         run: |
           # Publish in dependency order so each package's deps are already on npm
           PACKAGES=(cookie hashing logger query sentry auth ui vite cli)
@@ -125,15 +130,27 @@ jobs:
                   fi
                 }
               fi
-              bunx npm publish "$TARBALL" --provenance --access public --tag latest
+              # A version npm already holds (published or still staged, so `npm view`
+              # above cannot see it yet) is done, not a failure; anything else fails.
+              if ! OUT=$(bunx npm publish "$TARBALL" --provenance --access public --tag latest 2>&1); then
+                echo "$OUT"
+                if echo "$OUT" | grep -q 'Cannot publish over'; then
+                  echo "Skipping ${PKG_NAME}@${VERSION} — already on npm (not yet visible)"
+                else
+                  exit 1
+                fi
+              else
+                echo "$OUT"
+              fi
               rm -f "$TARBALL"
             )
           done
 
       - name: Publish adapters
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_NO_WARNINGS: 1
+          # Shows npm's OIDC exchange (trusted publishing) in the log.
+          NPM_CONFIG_LOGLEVEL: verbose
         run: |
           # Publish in dependency order — all adapters depend on kavach (published above)
           ADAPTERS=(amplify auth0 supabase firebase convex)
@@ -219,7 +236,18 @@ jobs:
                   fi
                 }
               fi
-              bunx npm publish "$TARBALL" --provenance --access public --tag latest
+              # A version npm already holds (published or still staged, so `npm view`
+              # above cannot see it yet) is done, not a failure; anything else fails.
+              if ! OUT=$(bunx npm publish "$TARBALL" --provenance --access public --tag latest 2>&1); then
+                echo "$OUT"
+                if echo "$OUT" | grep -q 'Cannot publish over'; then
+                  echo "Skipping ${PKG_NAME}@${VERSION} — already on npm (not yet visible)"
+                else
+                  exit 1
+                fi
+              else
+                echo "$OUT"
+              fi
               rm -f "$TARBALL"
             )
           done

@@ -1,6 +1,6 @@
 {
   "name": "@kavach/cli",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "CLI for scaffolding Kavach into SvelteKit projects",
   "type": "module",
   "bin": {
@@ -23,7 +23,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerrythomas/kavach",
+    "url": "https://github.com/sensei-hq/kavach",
     "directory": "packages/cli"
   },
   "homepage": "https://kavach.sensei-hq.com",

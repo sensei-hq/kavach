@@ -1,6 +1,6 @@
 {
   "name": "@kavach/ui",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "UI components for authentication and authorization",
   "author": "Jerry Thomas <me@jerrythomas.name>",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerrythomas/kavach",
+    "url": "https://github.com/sensei-hq/kavach",
     "directory": "packages/ui"
   },
   "homepage": "https://kavach.sensei-hq.com",
@@ -37,7 +37,7 @@
     }
   },
   "dependencies": {
-    "@rokkit/forms": "1.3.7",
+    "@rokkit/forms": "1.14.0",
     "kavach": "workspace:*",
     "ramda": "^0.32.0"
   },

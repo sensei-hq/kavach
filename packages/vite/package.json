@@ -1,13 +1,13 @@
 {
   "name": "@kavach/vite",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Vite plugin for Kavach authentication framework",
   "module": "src/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jerrythomas/kavach",
+    "url": "https://github.com/sensei-hq/kavach",
     "directory": "packages/vite"
   },
   "homepage": "https://kavach.sensei-hq.com",

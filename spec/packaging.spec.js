@@ -134,3 +134,21 @@ describe('published packages resolve under native ESM', () => {
 		})
 	})
 })
+
+// Publishing runs with `--provenance` through npm trusted publishing, and npm refuses a
+// provenance whose `repository.url` differs from the repository that ran the workflow — so
+// when the repository moved to sensei-hq, a manifest still naming the old owner would fail
+// the next release.
+describe('published package repository', () => {
+	const manifests = PUBLISHED_GROUPS.flatMap((group) =>
+		readdirSync(join(root, group)).map((name) => readManifest(join(root, group, name)))
+	).filter((manifest) => manifest && !manifest.private)
+
+	it('finds the publishable packages to check', () => {
+		expect(manifests.length).toBeGreaterThan(8)
+	})
+
+	it.each(manifests.map((m) => [m.name, m]))('%s names github.com/sensei-hq/kavach', (_, m) => {
+		expect(m.repository?.url).toMatch(/^https:\/\/github\.com\/sensei-hq\/kavach$/)
+	})
+})
