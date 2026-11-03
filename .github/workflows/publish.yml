@@ -27,10 +27,12 @@ jobs:
           bun-version-file: package.json
           no-cache: true
 
+      # npm trusted publishing (OIDC, `id-token: write`): no token and no
+      # `registry-url`. That option writes an .npmrc with `_authToken=${NODE_AUTH_TOKEN}`,
+      # and an empty token is sent instead of the OIDC exchange (ENEEDAUTH, v1.3.1).
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24.x
-          registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
       - name: Install dependencies
@@ -38,7 +40,6 @@ jobs:
 
       - name: Publish packages
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_NO_WARNINGS: 1
         run: |
           # Publish in dependency order so each package's deps are already on npm
@@ -132,7 +133,6 @@ jobs:
 
       - name: Publish adapters
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_NO_WARNINGS: 1
         run: |
           # Publish in dependency order — all adapters depend on kavach (published above)
