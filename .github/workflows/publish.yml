@@ -130,7 +130,18 @@ jobs:
                   fi
                 }
               fi
-              bunx npm publish "$TARBALL" --provenance --access public --tag latest
+              # A version npm already holds (published or still staged, so `npm view`
+              # above cannot see it yet) is done, not a failure; anything else fails.
+              if ! OUT=$(bunx npm publish "$TARBALL" --provenance --access public --tag latest 2>&1); then
+                echo "$OUT"
+                if echo "$OUT" | grep -q 'Cannot publish over'; then
+                  echo "Skipping ${PKG_NAME}@${VERSION} — already on npm (not yet visible)"
+                else
+                  exit 1
+                fi
+              else
+                echo "$OUT"
+              fi
               rm -f "$TARBALL"
             )
           done
@@ -225,7 +236,18 @@ jobs:
                   fi
                 }
               fi
-              bunx npm publish "$TARBALL" --provenance --access public --tag latest
+              # A version npm already holds (published or still staged, so `npm view`
+              # above cannot see it yet) is done, not a failure; anything else fails.
+              if ! OUT=$(bunx npm publish "$TARBALL" --provenance --access public --tag latest 2>&1); then
+                echo "$OUT"
+                if echo "$OUT" | grep -q 'Cannot publish over'; then
+                  echo "Skipping ${PKG_NAME}@${VERSION} — already on npm (not yet visible)"
+                else
+                  exit 1
+                fi
+              else
+                echo "$OUT"
+              fi
               rm -f "$TARBALL"
             )
           done
